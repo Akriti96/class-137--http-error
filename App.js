@@ -1,32 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createAppContainer } from "react-navigation"
-import { createStackNavigator } from "react-navigation-stack"
-import HomeScreen from "./screens/home"
-import DetailScreen from "./screens/details"
-export default class App extends React.Component {
-  render() {
-    return (
-     <Appcontainer/>
-    )
-  }
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./screens/Home";
+import DetailsScreen from "./screens/Details";
+
+export default function App() {
+  return <AppContainer />;
 }
 
-const AppStackNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions:{
-      headerShown: false
+const appStackNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        headerShown: false
+      }
+    },
+    Details: {
+      screen: DetailsScreen
     }
   },
-  Details: {
-    screen: DetailScreen
+  {
+    initialRouteName: "Home"
   }
-}, 
-{
-  initialRouteName: "Home"
-}
-)
+);
 
-
-const Appcontainer = createAppContainer(AppStackNavigator)
+const AppContainer = createAppContainer(appStackNavigator);
